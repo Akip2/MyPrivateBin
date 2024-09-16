@@ -24,7 +24,9 @@ jobs:
         php-version: 8.1
 
     - name: Install dependencies
-      run: make install
+      run: |
+          mkdir log
+          XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-text=log/coverage.txt
 
     - name: Test
-      run: ./vendor/bin/phpunit tst –coverage-text=log/coverageReport.txt
+      run: make test
