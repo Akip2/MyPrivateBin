@@ -26,6 +26,9 @@ jobs:
     - name: Install dependencies
       run: make install
 
+    - name: Install phpunit
+      run: composer require --dev phpunit/phpunit
+
     - name: Test
       run: phpunit --coverage-cobertura=coverage.cobertura.xml
       
