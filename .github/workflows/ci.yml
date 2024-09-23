@@ -27,7 +27,7 @@ jobs:
       run: make install
 
     - name: Test
-      run: make test
+      run: phpunit --coverage-cobertura=coverage.cobertura.xml
       
     - name: Code Coverage Report
       uses: irongut/CodeCoverageSummary@v1.3.0
