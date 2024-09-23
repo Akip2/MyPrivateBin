@@ -42,5 +42,5 @@ jobs:
         output: both
         thresholds: '60 80'
         
-    - name: ✅ Exporting coverage to action summary
+    - name: Exporting coverage to action summary
       run: cat code-coverage-results.md >> $GITHUB_STEP_SUMMARY
