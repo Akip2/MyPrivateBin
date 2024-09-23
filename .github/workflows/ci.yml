@@ -30,7 +30,7 @@ jobs:
       run: composer require --dev phpunit/phpunit
 
     - name: Test
-      run: phpunit --coverage-cobertura=coverage.cobertura.xml
+      run: ./vendor/bin/phpunit --coverage-cobertura=coverage.cobertura.xml
       
     - name: Code Coverage Report
       uses: irongut/CodeCoverageSummary@v1.3.0
