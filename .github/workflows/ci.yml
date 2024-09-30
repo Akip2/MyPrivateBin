@@ -22,11 +22,11 @@ jobs:
       uses: shivammathur/setup-php@v2
       with:
         php-version: 8.1
+        extensions: xmlwriter
 
     - name: Install dependencies
       run: |
         make install
-        sudo apt install php-xmlwriter
         bin/composer require --dev "squizlabs/php_codesniffer=3.*" 
         bin/composer require --dev "phpmd/phpmd=@stable"
         bin/composer require --dev phpstan/phpstan
