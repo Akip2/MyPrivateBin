@@ -27,7 +27,9 @@ jobs:
       run: make install
 
     - name: Run PHPCS
-      run: ./vendor/bin/phpcs --extensions=php ./lib/
+      run: sudo apt install php-xmlwriter 
+        | bin/composer require --dev "squizlabs/php_codesniffer=3.*"  
+        | ./vendor/bin/phpcs --extensions=php ./lib/*
 
     - name: Run PHPMD
       run: ./vendor/bin/phpmd ./lib ansi codesize,unusedcode,naming 
