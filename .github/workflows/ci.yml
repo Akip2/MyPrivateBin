@@ -26,6 +26,15 @@ jobs:
     - name: Install dependencies
       run: make install
 
+    - name: Run PHPCS
+      run: ./vendor/bin/phpcs --extensions=php ./lib/
+
+    - name: Run PHPMD
+      run: ./vendor/bin/phpmd ./lib ansi codesize,unusedcode,naming 
+
+    - name: Run PHPSTAN
+      run: ./vendor/bin/phpstan analyse lib
+
     - name: Test
       run: ./vendor/bin/phpunit --coverage-cobertura=coverage.cobertura.xml
       
