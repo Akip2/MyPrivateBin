@@ -27,12 +27,15 @@ jobs:
     - name: Install dependencies
       run: |
         make install
-        bin/composer require --dev "squizlabs/php_codesniffer=3.*" 
         bin/composer require --dev "phpmd/phpmd=@stable"
         bin/composer require --dev phpstan/phpstan
 
-    - name: Run PHPCS
-      run: ./vendor/bin/phpcs --extensions=php ./lib/*
+    - name: PHP Code Sniffer
+      uses: php-actions/phpcs@v1
+      with:
+        php_version: 8.1
+        path: src/
+        standard: phpcs.xml
 
     - name: Run PHPMD
       run: ./vendor/bin/phpmd ./lib ansi codesize,unusedcode,naming 
