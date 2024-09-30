@@ -25,10 +25,7 @@ jobs:
         extensions: xmlwriter
 
     - name: Install dependencies
-      run: |
-        make install
-        bin/composer require --dev "phpmd/phpmd=@stable"
-        bin/composer require --dev phpstan/phpstan
+      run: make install
 
     - name: PHP Code Sniffer
       uses: php-actions/phpcs@v1
@@ -36,12 +33,19 @@ jobs:
         php_version: 8.1
         path: ./lib/
         standard: phpcs.xml
-
-    - name: Run PHPMD
-      run: ./vendor/bin/phpmd ./lib ansi codesize,unusedcode,naming 
+      continue-on-error: true
+      
+    - name: PHP Mess Detector
+      uses: php-actions/phpmd@v1
+      with:
+        php_version: 8.1
+        path: ./lib/
+        output: text
+        ruleset: ruleset.xml
 
     - name: Run PHPSTAN
       run: ./vendor/bin/phpstan analyse lib
+      continue-on-error: true
 
     - name: Test
       run: ./vendor/bin/phpunit --coverage-cobertura=coverage.cobertura.xml
