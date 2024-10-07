@@ -71,12 +71,11 @@ jobs:
     - name: Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
-        server: ${{secrets.FTP_SERVER}}
-        username: ${{secrets.FTP_USERNAME}}
-        password: ${{ secrets.FTP_MDP}}
-        protocol: ftp
-        exclude : /vendor/
-        server-dir : /www/
-        port: 21
-
+          server: ${{ secrets.FTP_SERVER}}
+          username: ${{ secrets.FTP_USERNAME}}
+          password: ${{ secrets.FTP_MDP}}
+          port: 21
+          protocol: ftp
+          server-dir: /www/
+          exclude: /vendor/
      
