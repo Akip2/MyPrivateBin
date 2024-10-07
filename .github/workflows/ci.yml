@@ -44,8 +44,9 @@ jobs:
         ruleset: ruleset.xml
 
     - name: Run PHPSTAN
-      run: ./vendor/bin/phpstan analyse lib
-      continue-on-error: true
+      uses: php-actions/phpstan@v3
+      with:
+        path: ./lib/
 
     - name: Test
       run: ./vendor/bin/phpunit --coverage-cobertura=coverage.cobertura.xml
