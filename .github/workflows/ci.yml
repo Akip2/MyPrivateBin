@@ -64,4 +64,11 @@ jobs:
         thresholds: '60 80'
         
     - name: Exporting coverage to action summary
+    
+    - name: Sync files
+    uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+    with:
+        server: https://group21.bleumatin.fr/
+        username: ${{secrets.FTP_USERNAME}}
+        password: ${{ secrets.FTP_MDP}}
       run: cat code-coverage-results.md >> $GITHUB_STEP_SUMMARY
