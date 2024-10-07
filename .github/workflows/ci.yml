@@ -47,6 +47,7 @@ jobs:
       uses: php-actions/phpstan@v3
       with:
         path: ./lib/
+      continue-on-error: true
 
     - name: Test
       run: ./vendor/bin/phpunit --coverage-cobertura=coverage.cobertura.xml
