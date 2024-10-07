@@ -77,5 +77,4 @@ jobs:
           port: 21
           protocol: ftp
           server-dir: /www/
-          exclude: ./vendor/**
-     
+          exclude: vendor/**
