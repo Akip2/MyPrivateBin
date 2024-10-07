@@ -74,7 +74,9 @@ jobs:
         server: ${{secrets.FTP_SERVER}}
         username: ${{secrets.FTP_USERNAME}}
         password: ${{ secrets.FTP_MDP}}
-        exclude : vendor/**
-        server-dir : /www/  
+        protocol: ftp
+        exclude : /vendor/
+        server-dir : /www/
+        port: 21
 
      
